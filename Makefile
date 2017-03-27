@@ -8,7 +8,7 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
 
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml home
+EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml home $(wildcard .??*~) $(wildcard *~)
 # home は homeshick 用
 
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
