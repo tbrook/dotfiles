@@ -1,10 +1,4 @@
 
-# 
-# 
-# 参考、感謝: https://github.com/b4b4r07/dotfiles
-# 
-
-
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*) bin
 

@@ -15,10 +15,6 @@
 # $ bash -c "$(curl -L dot.tbrook.net)"
 # $ curl -L dot.tbrook.net | bash
 #
-# 
-# 参考、感謝: https://github.com/b4b4r07/dotfiles
-# 
-
 
 
 : "${DOTPATH:=${HOME}/.dotfiles}"
