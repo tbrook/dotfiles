@@ -3,6 +3,5 @@
 .config/*
 !.config/fish
 tmp
-etc/tmp
 .zsh/.zcompdump
 .zsh/.zsh_history
