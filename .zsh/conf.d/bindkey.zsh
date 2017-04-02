@@ -1,8 +1,9 @@
 
 bindkey -e
 
-bindkey -M emacs "^[[A" history-search-backward
-bindkey -M emacs "^[[B" history-search-forward
+
+bindkey -M emacs "^[[A" history-incremental-search-forward
+bindkey -M emacs "^[[B" history-incremental-search-backward
 bindkey -M emacs "^[[C" forward-word
 bindkey -M emacs "^[[D" backward-word
 
