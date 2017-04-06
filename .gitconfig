@@ -1,0 +1,41 @@
+[user]
+	name = tbrook
+	email = tbrook.net@gmail.com
+[core]
+	editor = emacsclient
+[alias]
+	st = status
+	s = status
+	ci = commit
+	co = checkout
+	br = branch
+	b = branch
+[color]
+	ui = true
+	interactive = true
+[color "branch"]
+	current = green bold
+	remote = red bold
+[color "diff"]
+	new = green bold
+	old = red bold
+	commit = yellow bold
+	frag = cyan bold
+	meta = white bold
+[color "status"]
+	changed = green bold
+	untracked = cyan bold
+	added = red bold
+[color "interactive"]
+	prompt = red bold
+	help = yellow bold
+	header = white bold
+[color "grep"]
+	match = magenta bold
+[github]
+	user = tbrook
+	token = 1283318633c275b56c93d3876ab20863
+[push]
+	default = matching
+[ghq]
+	root = ~/software-space/src
