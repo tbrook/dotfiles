@@ -8,7 +8,7 @@ zplug "${ZDOTDIR}/conf.d", from:local
 zplug "zsh-users/zsh-completions"
 
 
-zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-autosuggestions", defer:3
 
 
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
