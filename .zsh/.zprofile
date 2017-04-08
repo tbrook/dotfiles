@@ -1,5 +1,18 @@
 # -*- mode: Shell-script -*-
 
+if [ -z "$DOTPATH" ]; then
+    echo "cannot start $SHELL, \$DOTPATH not set" 1>&2
+    return 1
+fi
+
+. "$DOTPATH"/etc/lib/vital.sh
+
+if ! vitalize 2>/dev/null; then
+    echo "cannot vitalize, cannot start $SHELL" 1>&2
+    return 1
+fi
+
+
 export LANG=ja_JP.UTF-8
 
 export LESS='-g -i -M -R -S -w -X -z-4'
@@ -19,3 +32,10 @@ export EDITOR="emacsclient"
 export HISTFILE="${ZDOTDIR:-$HOME}/.zsh_history"
 export HISTSIZE=100000000
 export SAVEHIST=100000000
+
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+if has rbenv; then
+    eval "$(rbenv init -)"
+fi
