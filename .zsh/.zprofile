@@ -13,15 +13,27 @@ if ! vitalize 2>/dev/null; then
 fi
 
 
+# 
 export LANG=ja_JP.UTF-8
 
 
+# 
+if has emacsclient; then
+    EDITOR="emacsclient"
+else
+    EDITOR="vim"
+fi
+
+export EDITOR
+
+
+# 
 export PAGER=less
 
 
+# 
 export LESS='-g -i -M -R -S -w -X -z-4'
 export LESSOPEN='| /usr/bin/lesspipe %s'
-
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -32,9 +44,7 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 
 
-export EDITOR="emacsclient"
-
-
+# 
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 if has rbenv; then
@@ -42,4 +52,5 @@ if has rbenv; then
 fi
 
 
+# 
 export PATH="$SOFTWARE_PATH/bin:$PATH"
