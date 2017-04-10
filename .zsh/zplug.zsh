@@ -2,7 +2,7 @@
 zplug "zplug/zplug"
 
 
-zplug "${ZDOTDIR}/conf.d", from:local
+zplug "${ZDOTDIR}/rc.d", from:local
 
 
 zplug "zsh-users/zsh-completions"
