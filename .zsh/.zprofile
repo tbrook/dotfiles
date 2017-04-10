@@ -45,6 +45,10 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 
 
 # 
+export GOPATH="$SOFTWARE_PATH"
+
+
+# 
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 if has rbenv; then
