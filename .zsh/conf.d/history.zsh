@@ -25,6 +25,17 @@ bindkey "^p" history-beginning-search-backward-end
 bindkey "^n" history-beginning-search-forward-end
 
 
+# https://github.com/jimeh/zsh-peco-history を参考
+function peco-fc-selection() {
+    BUFFER=$(fc -l -r -n 1 | awk '!a[$0]++' | \
+               peco --layout=bottom-up --query "$LBUFFER")
+    CURSOR=$#BUFFER # move cursor
+    zle -R -c       # refresh
+}
+
+zle -N peco-fc-selection
+bindkey '^r' peco-fc-selection
+
 
 # Local variables:
 # mode: shell-script
