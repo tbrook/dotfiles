@@ -40,3 +40,6 @@ export PATH="$HOME/.rbenv/bin:$PATH"
 if has rbenv; then
     eval "$(rbenv init -)"
 fi
+
+
+export PATH="$SOFTWARE_PATH/bin:$PATH"
