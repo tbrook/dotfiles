@@ -3,8 +3,6 @@ umask 022
 set -o emacs
 
 
-DOTPATH="/vagrant/src/dotfiles"
-
 : "${DOTPATH:=${HOME}/.dotfiles}"
 export DOTPATH
 
