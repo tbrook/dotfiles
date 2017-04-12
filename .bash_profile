@@ -1,32 +1,18 @@
 
-DOTPATH="/vagrant/src/dotfiles"
+: "${XBDOTDIR:=${HOME}/.xbsh}"
+export XBDOTDIR
 
-: "${DOTPATH:=${HOME}/.dotfiles}"
-export DOTPATH
-
-
-if [[ ! -d "${SOFTWARE_PATH:=${HOME}/software-space}" ]]; then
-    SOFTWARE_PATH="${HOME}"
-fi
-
-export SOFTWARE_PATH
+[[ -f "$XBDOTDIR/.xbshenv" ]] && . "$XBDOTDIR/.xbshenv"
 
 
 : "${BADOTDIR:=${HOME}/.bash}"
 export BADOTDIR
 
 
-
-xbsh_profile="$HOME/.xbsh/.xbshprofile"
-
-if [[ -f $xbsh_profile ]]; then
-    . $xbsh_profile
-else
-    echo "'$xbsh_profile' is not exist." 1>&2
-fi
+source_f "$XBDOTDIR/.xbshprofile"
 
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+source_f ~/.bashrc
 
 
 

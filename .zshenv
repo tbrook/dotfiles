@@ -1,13 +1,9 @@
 
-: "${DOTPATH:=${HOME}/.dotfiles}"
-export DOTPATH
+: "${XBDOTDIR:=${HOME}/.xbsh}"
+export XBDOTDIR
 
 
-if [[ ! -d "${SOFTWARE_PATH:=${HOME}/software-space}" ]]; then
-    SOFTWARE_PATH="${HOME}"
-fi
-
-export SOFTWARE_PATH
+[[ -f "$XBDOTDIR/.xbshenv" ]] && . "$XBDOTDIR/.xbshenv"
 
 
 : "${ZDOTDIR:=${HOME}/.zsh}"
