@@ -3,22 +3,17 @@ umask 022
 set -o emacs
 
 
-: "${DOTPATH:=${HOME}/.dotfiles}"
-export DOTPATH
+: "${XBDOTDIR:=${HOME}/.xbsh}"
+export XBDOTDIR
 
-
-if [[ ! -d "${SOFTWARE_PATH:=${HOME}/software-space}" ]]; then
-    SOFTWARE_PATH="${HOME}"
-fi
-
-export SOFTWARE_PATH
+[[ -f "$XBDOTDIR/.xbshenv" ]] && . "$XBDOTDIR/.xbshenv"
 
 
 : "${BADOTDIR:=${HOME}/.bash}"
 export BADOTDIR
 
 
-[[ -f /etc/skel/.bashrc ]] && . /etc/skel/.bashrc
+source_f /etc/skel/.bashrc
 
 
 if [[ -d "${BADOTDIR/rc.d:-}" ]]; then
