@@ -16,6 +16,14 @@ export BADOTDIR
 source_f /etc/skel/.bashrc
 
 
+if [[ -d "${XBDOTDIR/rc.d:-}" ]]; then
+    for file in $XBDOTDIR/rc.d/*.xbsh
+    do
+	. $file
+    done
+fi
+
+
 if [[ -d "${BADOTDIR/rc.d:-}" ]]; then
     for file in $BADOTDIR/rc.d/*.bash
     do

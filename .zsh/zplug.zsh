@@ -2,7 +2,15 @@
 zplug "zplug/zplug"
 
 
-zplug "${ZDOTDIR}/rc.d", from:local
+if [[ -d "${XBDOTDIR}/rc.d" ]]; then
+    zplug "${XBDOTDIR}/rc.d", from:local, use:"*.xbsh"
+fi
+
+
+if [[ -d "${ZDOTDIR}/rc.d" ]]; then
+    zplug "${ZDOTDIR}/rc.d", from:local, use:"*.zsh"
+fi
+
 
 
 zplug "zsh-users/zsh-completions"
