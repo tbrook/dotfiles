@@ -4,3 +4,4 @@
 !.config/fish
 tmp
 .zsh/.zcompdump
+.xbsh/rc.d/git-prompt.xbsh
