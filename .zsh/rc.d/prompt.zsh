@@ -10,6 +10,14 @@ autoload -Uz colors
 setopt prompt_subst
 
 
+declare -Ag TBROOK_PROMPT_VCS_MARK_BG_COLOR
+
+TBROOK_PROMPT_VCS_MARK_BG_COLOR['+']='red'
+TBROOK_PROMPT_VCS_MARK_BG_COLOR['-']='green'
+TBROOK_PROMPT_VCS_MARK_BG_COLOR['?']='cyan'
+TBROOK_PROMPT_VCS_MARK_BG_COLOR['S']='yellow'
+
+
 
 function __tbrook::prompt::str::first_line_mark() {
     printf "\e[38;5;8m:\e[0m"
@@ -115,12 +123,15 @@ function __tbrook::prompt::str::vcs_info() {
 	prompt+="[%F{green}%B${vcs_info_msg_0_#*\-}%b%f]"
     fi
 
-    prompt+=$(echo "${vcs_info_msg_1_}" | \
-	sed -e s/\+/\%K{red}\+\%k/g | \
-	sed -e s/\-/\%K{green}\-\%k/g | \
-	sed -e s/\?/\%K{cyan}\?\%k/g | \
-	sed -e s/S/\%K{yellow}S\%k/g
-	)
+
+    # echo '-' は 空白が表示されるので printf を使う
+    # 連想配列だと key の順番が変わるので ${(k)連想配列} は使わない
+    for mark in '+' '-' '?' 'S'; do
+    	if printf "${vcs_info_msg_1_}" | grep -F "${mark}" > /dev/null 2>&1 ; then
+    	    prompt+="%K{${TBROOK_PROMPT_VCS_MARK_BG_COLOR['${mark}']}}${mark}%k"
+    	fi
+    done
+
 
     if [[ -n "$vcs_info_msg_2_" ]]; then
 	prompt+="<%F{red}${vcs_info_msg_2_}%f>"
@@ -213,9 +224,7 @@ if is-at-least 4.3.11; then
 	# untracked ファイル(バージョン管理されていないファイル)がある場合は
 	# unstaged (%u) に ? を表示
 
-	if command git status --porcelain  2> /dev/null | \
-	    awk 'BEGIN { ret_f = 1 }; $1 ~ /\?\?/ { ret_f = 0 ; exit ret_f }; END { exit ret_f }' ; then
-
+	if command git status --porcelain 2> /dev/null |command grep -E '^\?\?' > /dev/null 2>&1; then
             # unstaged (%u) に追加
             hook_com[unstaged]+='?'
         fi
@@ -225,7 +234,7 @@ if is-at-least 4.3.11; then
 	#
 	# stash している場合は S という形式で misc (%m) に表示
 
-        if [[ -n "$(git stash list 2>/dev/null)" ]]; then
+        if [[ -n $(command git stash list 2>/dev/null) ]]; then
             # misc (%m) に追加
             hook_com[misc]+="S"
         fi
