@@ -20,7 +20,7 @@ if [[ ! -e "${SOFTWARE_PATH:-}"  ]]; then
     do
 	sw_path="${sw_dir}/${sw_basename}"
 
-	if [[ -e "${sw_path}" ]]; then;
+	if [[ -e "${sw_path}" ]]; then
 	    ln -s "$sw_path" "${SOFTWARE_PATH}"
 	    break
 	fi
