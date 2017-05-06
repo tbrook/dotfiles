@@ -9,8 +9,11 @@ set -eu
 . "${DOTPATH:-${HOME}/.dotfiles}"/etc/lib/vital.sh
 
 
-if [[ ! -e "${SOFTWARE_PATH:-}"  ]]; then
-    sw_basename="$(basename $SOFTWARE_PATH)"
+software_path="${SOFTWARE_PATH:-${HOME}/software-space}"
+
+
+if [[ ! -e "$software_path"  ]]; then
+    sw_basename="$(basename $software_path)"
 
     for sw_dir in \
 	"${HOME}/var" \
@@ -21,7 +24,7 @@ if [[ ! -e "${SOFTWARE_PATH:-}"  ]]; then
 	sw_path="${sw_dir}/${sw_basename}"
 
 	if [[ -e "${sw_path}" ]]; then
-	    ln -s "$sw_path" "${SOFTWARE_PATH}"
+	    ln -s "${sw_path}" "${software_path}"
 	    break
 	fi
     done
