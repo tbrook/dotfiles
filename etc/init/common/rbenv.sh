@@ -19,11 +19,6 @@ fi
 rbenv_repos="https://github.com/rbenv/rbenv.git"
 rbenv_path="${HOME}/.rbenv"
 
-ruby_build_repos="https://github.com/rbenv/ruby-build.git"
-ruby_build_path="${rbenv_path}/plugins/ruby-build"
-
-
-
 if [[ ! -e "${rbenv_path}" ]]; then
     git clone $rbenv_repos "${rbenv_path}"
 
@@ -36,6 +31,9 @@ else
 fi
 
 
+ruby_build_repos="https://github.com/rbenv/ruby-build.git"
+ruby_build_path="${rbenv_path}/plugins/ruby-build"
+
 if [[ ! -e  "${ruby_build_path}" ]]; then
     git clone $ruby_build_repos "${ruby_build_path}"
 
@@ -47,6 +45,23 @@ else
     e_warning "'${ruby_build_path}' は既に存在しています"
 fi
 
+
+rbenv_update_repos="https://github.com/rkh/rbenv-update.git"
+rbenv_update_path="${rbenv_path}/plugins/rbenv-update"
+
+if [[ ! -e  "${rbenv_update_path}" ]]; then
+    git clone $rbenv_update_repos "${rbenv_update_path}"
+
+    # failed
+    if [[ $? != 0 ]]; then
+        e_error "rbenv-update: fails to installation of rbenv-update" >&2
+    fi
+else
+    e_warning "'${rbenv_update_path}' は既に存在しています"
+fi
+
+
+sudo -v
 
 # https://github.com/rbenv/ruby-build/wiki
 # Ubuntu/Debian/Mint:
