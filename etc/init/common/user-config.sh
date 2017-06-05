@@ -41,3 +41,34 @@ if [[ ! -e "$software_path"  ]]; then
     done
 fi
 
+
+
+### 
+xdg_user_dirs="${data_dir}/Xdg-user-dirs"
+
+if [[ -d "$xdg_user_dirs" ]]; then
+    for dir_name in \
+	Desktop \
+	Documents \
+	Downloads \
+	Music \
+	Pictures \
+	Public \
+	Templates \
+	Videos
+    do
+	dst_dir="${xdg_user_dirs}/${dir_name}"
+
+	if [[ -d "$dst_dir" ]]; then
+	    src_dir="${HOME}/${dir_name}"
+
+	    if [[ -e "$src_dir" ]]; then
+		mv "$src_dir" "${src_dir}.orig"
+	    fi
+
+	    ln -s "$dst_dir" "$src_dir"
+	fi
+    done
+fi
+
+LANG=C xdg-user-dirs-update
