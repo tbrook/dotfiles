@@ -9,20 +9,6 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 
-# Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp
-#             until this script has finished
-while true
-do
-    sudo -n true
-    sleep 60;
-    kill -0 "$$" || exit
-done 2>/dev/null &
-
-
-
 sudo apt-get -y update
 sudo apt-get -y install apt-transport-https ca-certificates
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D

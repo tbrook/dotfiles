@@ -15,7 +15,6 @@ cd "$HOME" && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar
 # CUI だと認証用 の URL が表示される
 "$HOME/.dropbox-dist/dropboxd"
 
-sudo -v
 
 sudo apt-get install nautilus-dropbox
 
