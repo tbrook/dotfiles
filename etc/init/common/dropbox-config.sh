@@ -12,12 +12,10 @@ set -eu
 
 # deamon start
 # CUI だと認証用 の URL が表示される
-"$HOME/.dropbox-dist/dropboxd" && dropbox stop
+"$HOME/.dropbox-dist/dropboxd"
 
+# dropbox start
 
 # ~/Dropbox を予めコピーしたい場合、コピー後
 # pushd ~/; cat /path/to/exclude-list | xargs dropbox exclude add; popd
 # を行う
-
-
-# dropbox start
