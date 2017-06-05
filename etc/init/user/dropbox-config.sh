@@ -10,15 +10,14 @@ set -eu
 # https://www.xmisao.com/2013/12/17/debian-64bit-dropbox-install.html
 
 
-cd "$HOME" && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-
+# deamon start
 # CUI だと認証用 の URL が表示される
-"$HOME/.dropbox-dist/dropboxd"
+"$HOME/.dropbox-dist/dropboxd" && dropbox stop
 
 
-sudo apt-get install nautilus-dropbox
-
-
-# dropbox start の前に
+# ~/Dropbox を予めコピーしたい場合、コピー後
 # pushd ~/; cat /path/to/exclude-list | xargs dropbox exclude add; popd
 # を行う
+
+
+# dropbox start
