@@ -18,12 +18,3 @@ sudo apt-get -y update
 sudo apt-get -y install linux-image-extra-$(uname -r)
 
 sudo apt-get -y install docker-engine
-
-sudo service docker start
-
-# sudo usermod -aG docker ubuntu
-# # sudo usermod -aG docker $USER か
-
-sudo gpasswd -a $USER docker
-
-sudo systemctl enable docker
