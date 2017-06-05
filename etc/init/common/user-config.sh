@@ -9,11 +9,22 @@ set -eu
 . "${DOTPATH:-${HOME}/.dotfiles}"/etc/lib/vital.sh
 
 
+
+### 
+data_dir="${HOME}/data"
+
+if [[ ! -e "${data_dir}" ]]; then
+    # /mnt/data が存在しなくても実行する
+    ln -s /mnt/data "${data_dir}"
+fi
+
+
+
+### 
 software_path="${SOFTWARE_PATH:-${HOME}/software-space}"
 
-
 if [[ ! -e "$software_path"  ]]; then
-    sw_basename="$(basename $software_path)"
+    sw_basename="$(basename "$software_path")"
 
     for sw_dir in \
 	"${HOME}/var" \
@@ -29,3 +40,4 @@ if [[ ! -e "$software_path"  ]]; then
 	fi
     done
 fi
+
