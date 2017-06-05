@@ -9,8 +9,10 @@ trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
 set -eu
 
 
-sudo gpasswd -a $USER docker
+if which docker > /dev/null 2>&1; then
+    echo "'${USER}' を docker グループに追加します。パスワードを入力して下さい"
+    sudo gpasswd -a $USER docker
 
-sudo service docker start
-
-sudo systemctl enable docker
+    sudo systemctl enable docker
+    sudo systemctl restart docker
+fi
