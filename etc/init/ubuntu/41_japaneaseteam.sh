@@ -1,0 +1,1 @@
+../ubuntu-package/japaneaseteam.sh
