@@ -23,7 +23,7 @@ tb.mount() {
     if ! mountpoint -q "$mnt"; then
 	if sudo mount -t "$fstype" -U "$uuid" -o "$opts" "$mnt"; then
 	    printf "\n以下を /etc/fstab に追加して下さい\n" >&2
-	    echo "# ${uuid}  ${mnt}  ${fstype}  ${opts}  ${opt1}  ${opt2}"
+	    echo "# UUID=${uuid}  ${mnt}  ${fstype}  ${opts}  ${opt1}  ${opt2}"
 	else
 	    echo "  error?UUID: ${uuid}" >&2
 	fi
