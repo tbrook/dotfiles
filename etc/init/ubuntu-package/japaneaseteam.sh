@@ -7,7 +7,5 @@ set -eu
 
 
 sudo add-apt-repository -y ppa:japaneseteam/ppa
-
 sudo apt-get -y update
-sudo apt-get -y upgrade
 sudo apt-get -y install ubuntu-defaults-ja
