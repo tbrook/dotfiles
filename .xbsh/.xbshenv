@@ -15,10 +15,7 @@ export DOTPATH
 
 
 # 
-if [[ ! -d "${SOFTWARE_PATH:=${HOME}/software-space}" ]]; then
-    SOFTWARE_PATH="${HOME}"
-fi
-
+: "${SOFTWARE_PATH:=${HOME}/software-space}"
 export SOFTWARE_PATH
 
 
