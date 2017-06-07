@@ -13,4 +13,4 @@ set -eu
 cd "$HOME" && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
 
 
-sudo apt-get install nautilus-dropbox
+sudo apt-get -y install nautilus-dropbox
