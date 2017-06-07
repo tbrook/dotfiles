@@ -219,23 +219,17 @@ tb.dotfiles_download() {
             # --recursive equals to ...
             # git submodule init
             # git submodule update
-
 	    git clone --recursive "$DOTFILES_REPOS_URI" "$DOTPATH"
 
         elif is_exists "curl" || is_exists "wget"; then
             # curl or wget
-
             if is_exists "curl"; then
-##                curl -L "$tarball"
-##                curl -L "$DOTFILES_TARBALL_URI"
-:
-            elif is_exists "wget"; then
-##                wget -O - "$tarball"
-##		wget -O - "$DOTFILES_TARBALL_URI"
-:
-##            fi | tar xvz
-fi
+                curl -L "$DOTFILES_TARBALL_URI"
 
+	    elif is_exists "wget"; then
+		wget -O - "$DOTFILES_TARBALL_URI"
+
+            fi | tar xvz
             if [ ! -d dotfiles-master ]; then
                 log_fail "dotfiles-master: not found"
                 exit 1
