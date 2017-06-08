@@ -9,14 +9,43 @@ set -eu
 . "${DOTPATH:-${HOME}/.dotfiles}"/etc/lib/vital.sh
 
 
+# 
+tb.gen_symlink() {
+    # 第3引数は 相対パスでシンボリックリンクを作成するなど用で、
+    # シンボリックリンクを置くディレクトリを指定する
+
+    if [[ ! $# -ge 2 ]]; then
+	echo "引数を2つ以上指定して下さい。src_dir  dst_dir  (target_dir)" >&2
+	return 1
+    fi
+
+    src_dir=$1
+    dst_dir=$2
+    
+    if [[ $# -ge 3 ]]; then
+	target_dir="$3"
+    else
+	target_dir="$(pwd)"
+    fi
+
+
+    if builtin pushd "$target_dir" > /dev/null; then
+	if [[ ! -e "$dst_dir"  ]]; then
+	    ln -s "$src_dir" "$dst_dir"
+	fi
+	builtin popd > /dev/null
+    fi
+}
+
+
+
 
 ### 
 data_dir="${HOME}/data"
 
-if [[ ! -e "${data_dir}" ]]; then
-    # /mnt/data が存在しなくても実行する
-    ln -s /mnt/data "${data_dir}"
-fi
+# /mnt/data が存在しなくてもシンボリックリンクを作成する
+tb.gen_symlink  /mnt/data  "${data_dir}"
+
 
 
 
@@ -40,6 +69,24 @@ if [[ ! -e "$software_path"  ]]; then
 	fi
     done
 fi
+
+
+
+
+###
+var_dir="${HOME}/var"
+
+if [[ ! -e "$var_dir"  ]]; then
+    mkdir "$var_dir"
+fi
+
+
+tb.gen_symlink  "${HOME}/Dropbox"  "${var_dir}/Dropbox"
+tb.gen_symlink  "${HOME}/software-space"  "${var_dir}/software-space"
+
+tb.gen_symlink  "Dropbox/data/vagrant"  "vagrant"  "$var_dir"
+tb.gen_symlink  "software-space/repos"  "repos"  "$var_dir"
+
 
 
 
