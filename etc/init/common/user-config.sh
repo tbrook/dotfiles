@@ -91,6 +91,8 @@ tb.gen_symlink  "software-space/repos"  "repos"  "$var_dir"
 
 
 ### 
+LANG=C xdg-user-dirs-update --force
+
 xdg_user_dirs="${data_dir}/Xdg-user-dirs"
 
 if [[ -d "$xdg_user_dirs" ]]; then
@@ -104,18 +106,16 @@ if [[ -d "$xdg_user_dirs" ]]; then
 	Templates \
 	Videos
     do
-	dst_dir="${xdg_user_dirs}/${dir_name}"
+	src_dir="${xdg_user_dirs}/${dir_name}"
 
-	if [[ -d "$dst_dir" ]]; then
-	    src_dir="${HOME}/${dir_name}"
+	if [[ -d "$src_dir" ]]; then
+	    dst_dir="${HOME}/${dir_name}"
 
-	    if [[ -e "$src_dir" ]]; then
-		mv "$src_dir" "${src_dir}.orig"
+	    if [[ -d "$dst_dir" ]] && [[ -z "$(ls -A "${dst_dir}/")" ]]; then
+		rm -rf "$dst_dir"
 	    fi
 
-	    ln -s "$dst_dir" "$src_dir"
+	    tb.gen_symlink  "$src_dir"  "$dst_dir"
 	fi
     done
 fi
-
-LANG=C xdg-user-dirs-update
