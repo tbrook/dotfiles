@@ -1,0 +1,1 @@
+../ubuntu-package/migemo.sh
