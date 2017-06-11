@@ -8,6 +8,10 @@ set -eu
 
 sudo apt-get -y install xfce4
 sudo apt-get -y install xfce4-whiskermenu-plugin
+
+sudo apt-get -y install xfwm4-themes
+
 sudo apt-get -y install lightdm
 sudo dpkg-reconfigure --frontend noninteractive lightdm
+
 sudo apt-get -y install xfce4-terminal
