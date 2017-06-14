@@ -76,9 +76,8 @@ fi
 ###
 var_dir="${HOME}/var"
 
-if [[ ! -e "$var_dir"  ]]; then
-    mkdir "$var_dir"
-fi
+mkdir -p "$var_dir"
+
 
 
 tb.gen_symlink  "${HOME}/Dropbox"  "${var_dir}/Dropbox"
