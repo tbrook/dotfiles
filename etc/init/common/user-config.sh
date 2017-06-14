@@ -31,7 +31,7 @@ tb.gen_symlink() {
 
     if builtin pushd "$target_dir" > /dev/null; then
 	if [[ ! -e "$dst_dir"  ]]; then
-	    ln -s "$src_dir" "$dst_dir"
+	    command ln -s "$src_dir" "$dst_dir"
 	fi
 	builtin popd > /dev/null
     fi
@@ -64,7 +64,7 @@ if [[ ! -e "$software_path"  ]]; then
 	sw_path="${sw_dir}/${sw_basename}"
 
 	if [[ -e "${sw_path}" ]]; then
-	    ln -s "${sw_path}" "${software_path}"
+	    command ln -s "${sw_path}" "${software_path}"
 	    break
 	fi
     done
