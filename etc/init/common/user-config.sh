@@ -79,6 +79,8 @@ var_dir="${HOME}/var"
 mkdir -p "$var_dir"
 
 
+tb.gen_symlink  "${HOME}/data"  "${HOME}/var/data"
+
 
 tb.gen_symlink  "${HOME}/Dropbox"  "${var_dir}/Dropbox"
 tb.gen_symlink  "${HOME}/software-space"  "${var_dir}/software-space"
