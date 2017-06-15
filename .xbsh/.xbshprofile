@@ -63,3 +63,8 @@ fi
 
 # 
 export PATH="$SOFTWARE_PATH/bin:$PATH"
+
+
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
