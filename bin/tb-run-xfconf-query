@@ -1,0 +1,100 @@
+#!/bin/bash
+
+
+# Stop script if errors occur
+trap 'echo Error: $0:$LINENO stopped; exit 1' ERR INT
+set -eu
+
+
+# チャンネルを調べる
+# xfconf-query -l
+
+# プロパティと値を調べる
+# xfconf-query -c xsettings -l -v
+
+# プロパティに値をセットする
+# xfconf-query -c xsettings -p "/Net/ThemeName" -s Bluebird  
+
+
+# タイトルバーのボタン配置
+xfconf-query -c xfwm4 -p "/general/button_layout" -s 'O|HMC'
+
+xfconf-query -c xfwm4 -p "/general/theme" -s Default-4.8
+
+
+# Bluebird がなくなっている
+# xfconf-query -c xsettings -p "/Net/ThemeName" -s Bluebird
+ xfconf-query -c xsettings -p "/Net/ThemeName" -s Greybird
+#xfconf-query -c xsettings -p "/Net/ThemeName" -s Xfce-basic
+
+xfconf-query -c xsettings -p "/Net/IconThemeName" -s Humanity
+
+
+
+# パネルの高さ
+#xfconf-query -c xfce4-panel -p "/panels/panel-1/size" -s 24
+xfconf-query -c xfce4-panel --create -p "/panels/panel-1/size" -t int -s 24
+
+
+# background-alpha: パネルの透明度。0: 透明、100: 不透明
+#xfconf-query -c xfce4-panel -p "/panels/panel-1/background-alpha" -s 0
+xfconf-query -c xfce4-panel --create -p "/panels/panel-1/background-alpha" -t int -s 0
+
+# 
+xfconf-query -c xfce4-panel --create -p "/panels/panel-1/length" -t int -s 100
+
+#xfconf-query -c xfce4-panel -p "/panels/panel-1/length-adjust" -s true
+xfconf-query -c xfce4-panel --create -p "/panels/panel-1/length-adjust" -t bool -s true
+
+#xfconf-query -c xfwm4 -p "/general/workspace_count" -s 10
+xfconf-query -c xfwm4 --create -p "/general/workspace_count" -t int -s 10
+
+# 
+xfconf-query -c xfwm4 --create -p "/general/cycle_preview" -t bool -s false
+
+
+# 
+xfconf-query -c xfwm4 --create -p "/general/double_click_action" -t string -s shade
+
+
+# 
+xfconf-query -c thunar --create -p "/misc-single-click" -t bool -s true
+
+# thunar で フォルダーを新しいタブで開く(true: タブ, false: ウィンドウ)
+xfconf-query -c thunar --create -p "/misc-middle-click-in-tab" -t bool -s true
+
+
+# 
+xfconf-query -c xfwm4 --create -p "/general/show_dock_shadow" -t bool -s false
+
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Shift>n" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>n" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>n" -n -t string -s cycle_windows_key
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Shift>p" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>p" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>p" -n -t string -s cycle_reverse_windows_key
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Shift>i" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>i" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Shift>i" -n -t string -s shade_window_key
+
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt>Left" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Left" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Left" -n -t string -s left_workspace_key
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt>Right" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Right" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Right" -n -t string -s right_workspace_key
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt>Up" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Up" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Up" -n -t string -s up_workspace_key
+
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Primary><Alt>Down" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Down" -r
+xfconf-query -c xfce4-keyboard-shortcuts -p "/xfwm4/custom/<Control><Alt>Down" -n -t string -s down_workspace_key
+
+
