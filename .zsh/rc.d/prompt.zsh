@@ -90,7 +90,7 @@ function __tbrook::prompt::str::network_info() {
 
 
 function __tbrook::prompt::str::time() {
-    echo -n "%F{cyan}%*%f"
+    echo -n "%F{cyan}%D{%Y-%m-%d} %*%f"
 
     if [[ -n "$1" ]]; then
 	printf ' '
