@@ -65,6 +65,14 @@ if has rbenv; then
 fi
 
 
+# JavaScript
+export PATH="$HOME/.ndenv/bin:$PATH"
+
+if has ndenv; then
+    eval "$(ndenv init -)"
+fi
+
+
 # 
 export PATH="${HOME}/bin:$PATH"
 
