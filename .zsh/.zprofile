@@ -1,5 +1,5 @@
 
-source_f "$HOME/.xbsh/.xbshprofile"
+[[ -f "$HOME/.xbsh/.xbshprofile" ]] && . "$HOME/.xbsh/.xbshprofile"
 
 
 # Local variables:

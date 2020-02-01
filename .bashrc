@@ -13,7 +13,7 @@ export XBDOTDIR
 export BADOTDIR
 
 
-source_f /etc/skel/.bashrc
+[[ -f /etc/skel/.bashrc ]] && . /etc/skel/.bashrc
 
 
 if [[ -d "${XBDOTDIR/rc.d:-}" ]]; then

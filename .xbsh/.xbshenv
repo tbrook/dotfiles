@@ -1,15 +1,5 @@
 
 # 
-source_f() {
-    if [ -f "$1" ]; then
-	. "$@"
-    else
-	echo "'$1' は FILE ではありません" 1>&2
-    fi
-}
-
-
-# 
 : "${DOTPATH:=${HOME}/.dotfiles}"
 export DOTPATH
 

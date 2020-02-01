@@ -5,14 +5,14 @@ export XBDOTDIR
 [[ -f "$XBDOTDIR/.xbshenv" ]] && . "$XBDOTDIR/.xbshenv"
 
 
+[[ -f "$XBDOTDIR/.xbshprofile" ]] && . "$XBDOTDIR/.xbshprofile"
+
+
 : "${BADOTDIR:=${HOME}/.bash}"
 export BADOTDIR
 
 
-source_f "$XBDOTDIR/.xbshprofile"
-
-
-source_f ~/.bashrc
+[[ -f ~/.bashrc ]] && . ~/.bashrc
 
 
 
