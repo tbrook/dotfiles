@@ -65,7 +65,8 @@ sudo -v
 
 # https://github.com/rbenv/ruby-build/wiki
 # Ubuntu/Debian/Mint:
-sudo apt install -y \
+
+sudo apt-get install -y \
     autoconf \
     bison \
     build-essential \
@@ -75,6 +76,6 @@ sudo apt install -y \
     zlib1g-dev \
     libncurses5-dev \
     libffi-dev \
-    libgdbm3 \
+    libgdbm5 \
     libgdbm-dev \
     > /dev/null 2>&1
