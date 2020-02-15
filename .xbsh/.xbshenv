@@ -9,6 +9,11 @@ export DOTPATH
 export SOFTWARE_PATH
 
 
+# 
+: "${MY_CONFIG_HOME:=${HOME}/.my_config}"
+export MY_CONFIG_HOME
+
+
 
 # Local variables:
 # mode: shell-script
