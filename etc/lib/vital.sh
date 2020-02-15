@@ -450,6 +450,35 @@ path_remove() {
     echo "$path"
 }
 
+
+# 
+tb.is_bash() {
+    [ -n "${BASH_VERSION-}" ]
+}
+
+
+# 
+tb.is_zsh() {
+    [ -n "${ZSH_VERSION-}" ]
+}
+
+
+# 
+tb.sh_name() {
+    if tb.is_bash; then
+	echo 'bash'
+    elif tb.is_zsh; then
+	echo 'zsh'
+    elif [ -n "${RANDOM-}" ]; then
+	echo 'ksh'
+    else
+	echo 'other'
+    fi
+}
+
+
+
+
 # Dotfiles {{{1
 
 # Set DOTPATH as default variable
