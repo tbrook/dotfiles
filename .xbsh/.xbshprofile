@@ -57,20 +57,9 @@ export GOPATH="$SOFTWARE_PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
 
-# Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-
-if has rbenv; then
-    eval "$(rbenv init -)"
-fi
-
-
-# JavaScript
-export PATH="$HOME/.ndenv/bin:$PATH"
-
-if has ndenv; then
-    eval "$(ndenv init -)"
-fi
+# anyenv
+export PATH="$HOME/.anyenv/bin:$PATH"
+export ANYENV_DEFINITION_ROOT="${MY_CONFIG_HOME}"/anyenv/anyenv-install
 
 
 # 

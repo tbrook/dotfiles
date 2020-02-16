@@ -8,6 +8,11 @@ export XBDOTDIR
 [[ -f "$XBDOTDIR/.xbshprofile" ]] && . "$XBDOTDIR/.xbshprofile"
 
 
+if has anyenv; then
+    eval "$(anyenv init - bash)"
+fi
+
+
 : "${BADOTDIR:=${HOME}/.bash}"
 export BADOTDIR
 
