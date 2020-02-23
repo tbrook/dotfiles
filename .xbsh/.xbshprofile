@@ -68,7 +68,3 @@ export PATH="${HOME}/bin:$PATH"
 
 # 
 export PATH="$SOFTWARE_PATH/bin:$PATH"
-
-
-# 
-tb-run-xfconf-query
